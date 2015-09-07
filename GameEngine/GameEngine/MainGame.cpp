@@ -61,22 +61,16 @@ void MainGame::initSystems()
 	gluPerspective(45, aspect, 1, 500);
 	glMatrixMode(GL_MODELVIEW);
 	glShadeModel(GL_SMOOTH);
-	glClearColor(0.0f, 0.1f, 0.0f, 0.5f);
 	glClearDepth(1.0f);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
 	GLfloat amb_light[] = { 0.1, 0.1, 0.1, 1.0 };
-	GLfloat diffuse[] = { 0.6, 0.6, 0.6, 1 };
-	GLfloat specular[] = { 0.7, 0.7, 0.3, 1 };
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb_light);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_COLOR_MATERIAL);
 	glShadeModel(GL_SMOOTH);
-	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE);
 	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
@@ -209,7 +203,7 @@ void MainGame::draw()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	gluLookAt(0, 1, 20, 0, 0, 0, 0, 1, 0);
+	gluLookAt(0, 1, 25, 0, 0, 0, 0, 1, 0);
 	glPushMatrix();
 	
 	glTranslatef(_xDist, _yDist, _zDist);
