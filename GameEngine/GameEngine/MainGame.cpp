@@ -3,11 +3,18 @@
 #include "iostream"
 #include "ObjLoader.h"
 using namespace std;
+
 MainGame::MainGame()
 {
 	ptr_window = nullptr;
 	_windowWidth = 640;
 	_windowHeight = 480;
+	_xDist = 0;
+	_yDist = 0;
+	_zDist = 0;
+	_yRot = 0;
+	_zRot = 0;
+	_xRot = 0;
 }
 
 
@@ -142,6 +149,53 @@ void MainGame::processInput()
 			case SDLK_ESCAPE:
 				_gameState = GameState::EXIT;
 				break;
+			case SDLK_w:
+				_yDist+=0.1f;
+				break;
+
+			case SDLK_s:
+				_yDist -= 0.1f;
+				break;
+
+			case SDLK_a:
+				_xDist -= 0.1f;
+				break;
+
+			case SDLK_d:
+				_xDist += 0.1f;
+				break;
+
+			case SDLK_q:
+				_yRot += 1.0f;
+				break;
+
+			case SDLK_e:
+				_yRot -= 1.0f;
+				break;
+
+			case SDLK_r:
+				_zRot += 1.0f;
+				break;
+
+			case SDLK_t:
+				_zRot -= 1.0f;
+				break;
+
+			case SDLK_y:
+				_xRot += 1.0f;
+				break;
+
+			case SDLK_u:
+				_xRot -= 1.0f;
+				break;
+
+			case SDLK_z:
+				_zDist += 1.0f;
+				break;
+
+			case SDLK_x:
+				_zDist -= 1.0f;
+				break;
 			}
 
 		
@@ -157,12 +211,16 @@ void MainGame::draw()
 	glLoadIdentity();
 	gluLookAt(0, 1, 20, 0, 0, 0, 0, 1, 0);
 	glPushMatrix();
-	glRotatef(45, 0, 1, 0);
-	glRotatef(90, 0, 1, 0);
-	//	g_rotation++;
+	
+	glTranslatef(_xDist, _yDist, _zDist);
+	glRotatef(_yRot,0.0f, 1.0f, 0.0f);
+	glRotatef(_xRot, 1.0f, 0.0, 0.0f);
+	glRotatef(_zRot, 0.0f, 0.0, 1.0f);
 	obj.Draw();
 	glPopMatrix();
 	SDL_GL_SwapWindow(ptr_window);
 
 }
+
+
 

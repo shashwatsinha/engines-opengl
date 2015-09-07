@@ -17,6 +17,12 @@ public:
 	void processInput();
 	GameState _gameState;
 	ObjLoader obj;
+	float _xDist;
+	float _yDist;
+	float _zDist;
+	float _xRot;
+	float _yRot;
+	float _zRot;
 
 private:
 	SDL_Window *ptr_window;

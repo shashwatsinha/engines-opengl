@@ -152,4 +152,5 @@ void ObjLoader::Draw()
 	glDrawArrays(GL_TRIANGLES, 0, _totalConnectedTriangles);
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
+
 }
