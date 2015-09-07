@@ -15,6 +15,7 @@ MainGame::MainGame()
 	_yRot = 0;
 	_zRot = 0;
 	_xRot = 0;
+	_maxFPS = 60;
 }
 
 
@@ -88,9 +89,28 @@ void MainGame::run()
 void MainGame::gameLoop()
 {
 	//Will loop until we set _gameState to EXIT
-	while (_gameState != GameState::EXIT) {
+	while (_gameState != GameState::EXIT) 
+	{
+		float _startTicks = SDL_GetTicks();
 		processInput();
 		draw();
+		calculateFPS();
+		//print only once every 10 frames
+		static int _frameCounter = 0;
+		_frameCounter++;
+		if (_frameCounter == 10)
+		{
+			cout << _fps << endl;
+			_frameCounter = 0;
+		}
+
+		float _frameTicks = SDL_GetTicks() - _startTicks;
+
+		//limit FPS to max FPS
+		if (1000.0f / _maxFPS > _frameTicks)
+		{
+			SDL_Delay(1000.0f / _maxFPS - _frameTicks);
+		}
 	}
 }
 
@@ -125,7 +145,7 @@ void MainGame::processInput()
 			_gameState = GameState::EXIT;
 			break;
 		case SDL_MOUSEMOTION:
-			std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
+		//	std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
 			break;
 
 		case SDL_KEYDOWN:
@@ -216,5 +236,53 @@ void MainGame::draw()
 
 }
 
+void MainGame::calculateFPS()
+{
+	static const int _numSamples = 1000;
+	static float frameTimes[_numSamples];
+	static int _currentFrame = 0;
 
+	static float _prevTicks = SDL_GetTicks();
+
+	float _currentTicks;
+	_currentTicks = SDL_GetTicks();
+
+	_frameTime = _currentTicks - _prevTicks;
+	frameTimes[_currentFrame%_numSamples] = _frameTime;
+
+	_prevTicks = _currentTicks;
+
+	int _count;
+
+	_currentFrame++;
+
+
+	if (_currentFrame < _numSamples)
+	{
+		_count = _currentFrame;
+	}
+
+	else
+	{
+		_count = _numSamples;
+	}
+
+	float _frameTimeAverage = 0.0f;
+	for (int i = 0; i < _count; i++)
+	{
+		_frameTimeAverage += frameTimes[i];
+	}
+
+	_frameTimeAverage /= _count;
+
+	if (_frameTimeAverage > 0)
+	{
+		_fps = 1000 / _frameTimeAverage;
+	}
+
+	else
+	{
+		_fps = 60;
+	}
+}
 
