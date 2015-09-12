@@ -4,6 +4,8 @@
 #include "ObjLoader.h"
 using namespace std;
 
+
+
 MainGame::MainGame()
 {
 	ptr_window = nullptr;
@@ -15,7 +17,10 @@ MainGame::MainGame()
 	_yRot = 0;
 	_zRot = 0;
 	_xRot = 0;
+	_eyeX = 0;
 	_maxFPS = 60;
+	_mouseVel = 0.2f;
+	_moveVel = 0.2f;
 }
 
 
@@ -30,15 +35,15 @@ void MainGame::initSystems()
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	//Open an SDL window
-	ptr_window = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _windowWidth, _windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE );
-	if (ptr_window == nullptr) 
+	ptr_window = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _windowWidth, _windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
+	if (ptr_window == nullptr)
 	{
 		fatalError("SDL Window could not be created!");
 	}
 
 	//Set up our OpenGL context
 	SDL_GLContext glContext = SDL_GL_CreateContext(ptr_window);
-	if (glContext == nullptr) 
+	if (glContext == nullptr)
 	{
 		fatalError("SDL_GL context could not be created!");
 	}
@@ -76,20 +81,22 @@ void MainGame::initSystems()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
-	
+
 }
 
 void MainGame::run()
 {
 	initSystems();
 	obj.load("Models/Teapot.obj");
+	obj2.load("Models/Cow.obj");
+
 	gameLoop();
 }
 
 void MainGame::gameLoop()
 {
 	//Will loop until we set _gameState to EXIT
-	while (_gameState != GameState::EXIT) 
+	while (_gameState != GameState::EXIT)
 	{
 		float _startTicks = SDL_GetTicks();
 		processInput();
@@ -100,7 +107,7 @@ void MainGame::gameLoop()
 		_frameCounter++;
 		if (_frameCounter == 10)
 		{
-			cout << _fps << endl;
+		//	cout << _fps << endl;
 			_frameCounter = 0;
 		}
 
@@ -114,14 +121,16 @@ void MainGame::gameLoop()
 	}
 }
 
+
+
 void MainGame::processInput()
 {
 	SDL_Event evnt;
 
 	//Will keep looping until there are no more events to process
-	while (SDL_PollEvent(&evnt)) 
+	while (SDL_PollEvent(&evnt))
 	{
-		switch (evnt.type) 
+		switch (evnt.type)
 		{
 		case SDL_WINDOWEVENT:
 			switch (evnt.window.event)
@@ -145,15 +154,22 @@ void MainGame::processInput()
 			_gameState = GameState::EXIT;
 			break;
 		case SDL_MOUSEMOTION:
-		//	std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
+			//	std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
 			break;
+
+		case SDL_MOUSEBUTTONDOWN:
+			mouseIn = true;
+			SDL_ShowCursor(SDL_DISABLE);
+			break;
+
+		
 
 		case SDL_KEYDOWN:
 			switch (evnt.key.keysym.sym)
 			{
 				//Press F1 to go full screen
-			case SDLK_F1 :
-				SDL_SetWindowFullscreen(ptr_window,SDL_WINDOW_FULLSCREEN);
+			case SDLK_F1:
+				SDL_SetWindowFullscreen(ptr_window, SDL_WINDOW_FULLSCREEN);
 				break;
 				//Press F2 to come back from fullscreen
 				//Use function SDL_SetWindowSize() for custom size window
@@ -164,55 +180,37 @@ void MainGame::processInput()
 				_gameState = GameState::EXIT;
 				break;
 			case SDLK_w:
-				_yDist+=0.1f;
+				if (mainCam.camPitch != 90 && mainCam.camPitch != -90)
+				{
+					mainCam.moveCamera(_moveVel, 0.0f);
+				}
+				mainCam.moveCameraUp(_moveVel, 0.0f);
 				break;
 
 			case SDLK_s:
-				_yDist -= 0.1f;
+				if (mainCam.camPitch != 90 && mainCam.camPitch != -90)
+				{
+					mainCam.moveCamera(_moveVel, 180.0f);
+				}
+				mainCam.moveCameraUp(_moveVel, 180.0f);
 				break;
-
+			case SDLK_p:
+				mouseIn = false;
+				SDL_ShowCursor(SDL_ENABLE);
+				break;
 			case SDLK_a:
-				_xDist -= 0.1f;
+				mainCam.moveCamera(_moveVel, 90.0f);
 				break;
 
 			case SDLK_d:
-				_xDist += 0.1f;
+				mainCam.moveCamera(_moveVel, 270);
 				break;
-
-			case SDLK_q:
-				_yRot += 1.0f;
-				break;
-
-			case SDLK_e:
-				_yRot -= 1.0f;
-				break;
-
-			case SDLK_r:
-				_zRot += 1.0f;
-				break;
-
-			case SDLK_t:
-				_zRot -= 1.0f;
-				break;
-
-			case SDLK_y:
-				_xRot += 1.0f;
-				break;
-
-			case SDLK_u:
-				_xRot -= 1.0f;
-				break;
-
-			case SDLK_z:
-				_zDist += 1.0f;
-				break;
-
-			case SDLK_x:
-				_zDist -= 1.0f;
-				break;
+				
+			
 			}
 
-		
+
+
 		}
 	}
 }
@@ -223,14 +221,21 @@ void MainGame::draw()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	gluLookAt(0, 1, 25, 0, 0, 0, 0, 1, 0);
+	mainCam.control(_moveVel, _mouseVel, mouseIn, ptr_window);
+	mainCam.updateCamera();
+	gluLookAt(0, 1,25, 0, 0,0 , 0, 1, 0);
+	glTranslatef(mainCam.camX*-1, mainCam.camY*-1, mainCam.camZ*-1);
+
 	glPushMatrix();
-	
-	glTranslatef(_xDist, _yDist, _zDist);
-	glRotatef(_yRot,0.0f, 1.0f, 0.0f);
-	glRotatef(_xRot, 1.0f, 0.0, 0.0f);
-	glRotatef(_zRot, 0.0f, 0.0, 1.0f);
+	glTranslatef(mainCam.camX*-1, mainCam.camY*-1, mainCam.camZ*-1);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(-2, 0, 0);
 	obj.Draw();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(2, 0, 0);
+	obj2.Draw();
 	glPopMatrix();
 	SDL_GL_SwapWindow(ptr_window);
 
