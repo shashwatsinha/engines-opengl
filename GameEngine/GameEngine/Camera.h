@@ -8,6 +8,10 @@ class Camera
 {
 private:
 
+    float nearPlaneDepth;
+	float farPlaneDepth;
+	float viewAngleX;
+	float viewAngleY;
 public:
 	Camera();
 
@@ -15,6 +19,9 @@ public:
 	void moveCamera(float, float);
 	void moveCameraUp(float, float);
 	void control(float moveVel, float mouseVel, bool mi, SDL_Window *ptr_window);
+    void drawFrustum();
+	float* sphericalToCartesianCoordinates(float*);
+	float* addCamPosToCoord(float*);
 	float camX, camY, camZ,camYaw,camPitch;
 	bool mouseIn;
 	void updateCamera();

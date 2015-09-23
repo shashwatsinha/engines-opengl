@@ -93,8 +93,11 @@ void MainGame::run()
 {
 	initSystems();
 	_obn1 = obj.load("Models/ViolinCase.obj");
+    _obn1.setPosition(-2.0f, 0.0f, 5f);
 	_obn2 = obj2.load("Models/capsule.obj");
+    _obn2.setPosition(5.0f, 0.0f, 0.0f);
 	_obn3 = obj3.load("Models/Teapot.obj");
+    debug = true;
 
 	gameLoop();
 }
@@ -217,6 +220,24 @@ void MainGame::processInput()
 				mainCam.moveCamera(_moveVel, 270);
 				break;
 				
+            case SDLK_i:
+				debugCam.moveCamera(_moveVel, 0.0f);
+				break;
+			case SDLK_k:
+				debugCam.moveCamera(_moveVel, 180.0f);
+				break;
+			case SDLK_j:
+				debugCam.moveCamera(_moveVel, 90.0f);
+				break;
+			case SDLK_l:
+				debugCam.moveCamera(_moveVel, 270.0f);
+				break;
+			case SDLK_UP:
+				debugCam.camPitch += 0.1f;
+				break;
+			case SDLK_DOWN:
+				debugCam.camPitch -= 0.1f;
+				break;
 			
 			}
 		}
@@ -233,15 +254,19 @@ void MainGame::draw()
 	gluLookAt(0, 1,25, 0, 0,0 , 0, 1, 0);
 	glTranslatef(mainCam.camX*-1, mainCam.camY*-1, mainCam.camZ*-1);
 
+    if(debug)
+	{
+		debugCam.drawFrustum();
+	}
 	glPushMatrix();
 	glTranslatef(mainCam.camX*-1, mainCam.camY*-1, mainCam.camZ*-1);
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(-2, 0, 5);
+	glTranslatef(_obn1.getX(), _obn1.getY(), _obn1.getZ());
 	glCallList(_obn1);
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(5, 0, 0);
+	glTranslatef(_obn2.getX(), _obn2.getY(), _obn2.getZ());
 	glCallList(_obn2);
 	glPopMatrix();
 

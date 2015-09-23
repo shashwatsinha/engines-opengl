@@ -399,3 +399,25 @@ ObjLoader::ObjLoader()
         isnormals=false;
         istexture=false;
 }
+
+float ObjLoader::getX()
+{
+	return pos[0];
+}
+
+float ObjLoader::getY()
+{
+	return pos[1];
+}
+
+float ObjLoader::getZ()
+{
+	return pos[2];
+}
+
+void ObjLoader::setPosition(float newX, float newY, float newZ)
+{
+	pos[0] = newX;
+	pos[1] = newY;
+	pos[2] = newZ;
+}

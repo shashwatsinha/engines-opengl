@@ -58,11 +58,16 @@ class ObjLoader{
         bool ismaterial,isnormals,istexture;    //obvious
         unsigned int loadTexture(const char* filename); //private load texture function
         void clean();   //free all of the used memory
+        float pos[3];
        
         public:
         ObjLoader();   
         ~ObjLoader();   //free the textures and lists
         int load(const char* filename); //the main model load function
+        float getX();
+        float getY();
+        float getZ();
+        void setPosition(float, float, float);
 };
  
 #endif

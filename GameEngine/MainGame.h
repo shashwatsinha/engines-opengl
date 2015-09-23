@@ -28,6 +28,7 @@ public:
 	int _obn2;
 	int _obn3;
 	Camera mainCam;
+    Camera debugCam;
 	float _xDist;
 	float _yDist;
 	float _zDist;
@@ -50,6 +51,7 @@ private:
 	float _maxFPS;
 	float _moveVel;
 	float _mouseVel;
+    bool debug;
 };
 
 struct data
