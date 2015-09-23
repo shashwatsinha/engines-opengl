@@ -53,20 +53,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>E:\Simple OpenGL Image Library\src;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\include;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Simple OpenGL Image Library\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VC_IncludePath)\SDL;$(VC_IncludePath)\SOIL;$(VC_IncludePath)\GL;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86)\SOIL.lib;$(VC_LibraryPath_x86)\SDL2main.lib;$(VC_LibraryPath_x86)\SDL2.lib;$(VC_LibraryPath_x86)\glew32s.lib;$(VC_LibraryPath_x86)\glew32.lib;C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\Glew\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>E:\Simple OpenGL Image Library\src;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\include;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Simple OpenGL Image Library\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VC_IncludePath)\SDL;$(VC_IncludePath)\SOIL;$(VC_IncludePath)\GL;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86)\SOIL.lib;$(VC_LibraryPath_x86)\SDL2main.lib;$(VC_LibraryPath_x86)\SDL2.lib;$(VC_LibraryPath_x86)\glew32s.lib;$(VC_LibraryPath_x86)\glew32.lib;C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\Glew\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>E:\Simple OpenGL Image Library\src;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\include;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Simple OpenGL Image Library\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VC_IncludePath)\SDL;$(VC_IncludePath)\SOIL;$(VC_IncludePath)\GL;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86)\SOIL.lib;$(VC_LibraryPath_x86)\SDL2main.lib;$(VC_LibraryPath_x86)\SDL2.lib;$(VC_LibraryPath_x86)\glew32s.lib;$(VC_LibraryPath_x86)\glew32.lib;C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\Glew\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>E:\Simple OpenGL Image Library\src;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\include;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Simple OpenGL Image Library\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VC_IncludePath)\SDL;$(VC_IncludePath)\SOIL;$(VC_IncludePath)\GL;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86)\SOIL.lib;$(VC_LibraryPath_x86)\SDL2main.lib;$(VC_LibraryPath_x86)\SDL2.lib;$(VC_LibraryPath_x86)\glew32s.lib;$(VC_LibraryPath_x86)\glew32.lib;C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\Glew\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -99,11 +99,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;glew32s.lib;glew32.lib;opengl32.lib;SOIL.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;glew32s.lib;glew32.lib;opengl32.lib;SOIL.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

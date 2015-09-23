@@ -1,16 +1,52 @@
-﻿Build started 9/22/2015 8:35:54 PM.
-     1>Project "C:\Users\user\documents\visual studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.exe" /NOLOGO SDL2.lib SDL2main.lib SDL2test.lib glew32s.lib glew32.lib opengl32.lib SOIL.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
+﻿Build started 9/23/2015 10:13:48 AM.
+     1>Project "C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\GameEngine\GameEngine.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt MainGame.cpp ObjLoader.cpp Source.cpp
+         MainGame.cpp
+     1>c:\users\reuben brenner-adams\documents\github\engines-opengl\gameengine\gameengine\Camera.h(28): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>MainGame.cpp(108): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+     1>MainGame.cpp(126): warning C4244: 'argument' : conversion from 'float' to 'Uint32', possible loss of data
+     1>MainGame.cpp(289): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+     1>MainGame.cpp(292): warning C4244: '=' : conversion from 'Uint32' to 'float', possible loss of data
+         ObjLoader.cpp
+     1>ObjLoader.cpp(81): warning C4018: '<' : signed/unsigned mismatch
+     1>ObjLoader.cpp(137): warning C4018: '<' : signed/unsigned mismatch
+     1>ObjLoader.cpp(172): warning C4018: '<' : signed/unsigned mismatch
+     1>ObjLoader.cpp(254): warning C4018: '<' : signed/unsigned mismatch
+     1>ObjLoader.cpp(334): warning C4018: '<' : signed/unsigned mismatch
+     1>ObjLoader.cpp(336): warning C4018: '<' : signed/unsigned mismatch
+     1>ObjLoader.cpp(338): warning C4018: '<' : signed/unsigned mismatch
+     1>ObjLoader.cpp(340): warning C4018: '<' : signed/unsigned mismatch
+     1>ObjLoader.cpp(342): warning C4018: '<' : signed/unsigned mismatch
+     1>ObjLoader.cpp(344): warning C4018: '<' : signed/unsigned mismatch
+         Source.cpp
+     1>c:\users\reuben brenner-adams\documents\github\engines-opengl\gameengine\gameengine\Camera.h(28): warning C4305: 'initializing' : truncation from 'double' to 'float'
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\Release\GameEngine.exe" /NOLOGO SDL2.lib SDL2main.lib SDL2test.lib glew32s.lib glew32.lib opengl32.lib SOIL.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\Release\GameEngine.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\Release\GameEngine.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
          Release\Errors.obj
          Release\MainGame.obj
          Release\ObjLoader.obj
          Release\Source.obj
-         Generating code
-         Finished generating code
-         GameEngine.vcxproj -> C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.exe
-     1>Done Building Project "C:\Users\user\documents\visual studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" (Build target(s)).
+     1>Camera.obj : error LNK2001: unresolved external symbol _SDL_WarpMouseInWindow
+     1>Camera.obj : error LNK2001: unresolved external symbol _SDL_ShowCursor
+     1>Camera.obj : error LNK2001: unresolved external symbol _SDL_GetMouseState
+     1>Errors.obj : error LNK2001: unresolved external symbol _SDL_Quit
+     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_Init
+     1>MainGame.obj : error LNK2001: unresolved external symbol __imp__glewInit@0
+     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_GL_SwapWindow
+     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_SetWindowFullscreen
+     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_CreateWindow
+     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_PollEvent
+     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_GL_CreateContext
+     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_Delay
+     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_GetTicks
+     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_GL_SetAttribute
+     1>SOIL.lib(stb_image_aug.o) : error LNK2001: unresolved external symbol __alloca
+     1>SOIL.lib(image_helper.o) : error LNK2001: unresolved external symbol _sqrtf
+     1>MSVCRT.lib(crtexe.obj) : error LNK2001: unresolved external symbol _main
+     1>C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\Release\GameEngine.exe : fatal error LNK1120: 17 unresolved externals
+     1>Done Building Project "C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\GameEngine\GameEngine.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:02.77
+Time Elapsed 00:00:04.47

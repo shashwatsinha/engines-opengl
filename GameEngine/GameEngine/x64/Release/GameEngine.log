@@ -1,14 +1,24 @@
-﻿Build started 9/22/2015 8:36:22 PM.
-     1>Project "C:\Users\user\documents\visual studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\x64\Release\GameEngine.exe" /NOLOGO SDL2.lib SDL2main.lib SDL2test.lib glew32s.lib glew32.lib opengl32.lib SOIL.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\x64\Release\GameEngine.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\x64\Release\GameEngine.lib" /MACHINE:X64 x64\Release\Camera.obj
+﻿Build started 9/23/2015 10:14:26 AM.
+     1>Project "C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\GameEngine\GameEngine.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W1 /WX- /O2 /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt Camera.cpp Errors.cpp MainGame.cpp ObjLoader.cpp Source.cpp
+         Camera.cpp
+     1>Camera.cpp(157): warning C4172: returning address of local variable or temporary
+     1>Camera.cpp(168): warning C4172: returning address of local variable or temporary
+         Errors.cpp
+         MainGame.cpp
+         ObjLoader.cpp
+         Source.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\x64\Release\GameEngine.exe" /NOLOGO SDL2.lib SDL2main.lib SDL2test.lib glew32s.lib glew32.lib opengl32.lib SOIL.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\x64\Release\GameEngine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\x64\Release\GameEngine.lib" /MACHINE:X64 x64\Release\Camera.obj
          x64\Release\Errors.obj
          x64\Release\MainGame.obj
          x64\Release\ObjLoader.obj
          x64\Release\Source.obj
-     1>LINK : fatal error LNK1181: cannot open input file 'SDL2.lib'
-     1>Done Building Project "C:\Users\user\documents\visual studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" (Build target(s)) -- FAILED.
+     1>msvcprt.lib(MSVCP120.dll) : fatal error LNK1112: module machine type 'X86' conflicts with target machine type 'x64'
+     1>Done Building Project "C:\Users\Reuben Brenner-Adams\Documents\GitHub\engines-opengl\GameEngine\GameEngine\GameEngine.vcxproj" (Rebuild target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:00.14
+Time Elapsed 00:00:08.96

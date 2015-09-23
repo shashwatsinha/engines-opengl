@@ -93,9 +93,7 @@ void MainGame::run()
 {
 	initSystems();
 	_obn1 = obj.load("Models/ViolinCase.obj");
-    _obn1.setPosition(-2.0f, 0.0f, 5f);
 	_obn2 = obj2.load("Models/capsule.obj");
-    _obn2.setPosition(5.0f, 0.0f, 0.0f);
 	_obn3 = obj3.load("Models/Teapot.obj");
     debug = true;
 
@@ -262,11 +260,11 @@ void MainGame::draw()
 	glTranslatef(mainCam.camX*-1, mainCam.camY*-1, mainCam.camZ*-1);
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(_obn1.getX(), _obn1.getY(), _obn1.getZ());
+	glTranslatef(-5, 0, 2);
 	glCallList(_obn1);
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(_obn2.getX(), _obn2.getY(), _obn2.getZ());
+	glTranslatef(5,0,0);
 	glCallList(_obn2);
 	glPopMatrix();
 

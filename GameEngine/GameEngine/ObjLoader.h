@@ -8,7 +8,7 @@
 #include <fstream>
 #include <cstdio>
 #include <iostream>
-#include <SOIL.h>
+#include <SOIL\SOIL.h>
 #ifndef OBJLOADER_H
 #define OBJLOADER_H
  

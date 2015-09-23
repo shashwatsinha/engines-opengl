@@ -3,7 +3,6 @@
 #include <GL/glew.h>
 #include "ObjLoader.h"
 #include "Camera.h"
-#include <SDL\SDL_net.h>
 #include <cstring>
 
 enum class GameState { PLAY, EXIT };
@@ -54,16 +53,5 @@ private:
     bool debug;
 };
 
-struct data
-{
-	TCPsocket socket;
-	Uint32 timeout;
-	int id;
-	data(TCPsocket sock, Uint32 t, int i)
-	{
-		socket = sock;
-		timeout = t;
-		id = i;
-	}
-};
+
 

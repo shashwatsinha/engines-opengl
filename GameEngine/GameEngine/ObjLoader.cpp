@@ -369,7 +369,7 @@ ObjLoader::~ObjLoader()
 unsigned int ObjLoader::loadTexture(const char* filename)
 {
         //nothing new in here
-  /*      unsigned int num;
+       /*unsigned int num;
         glGenTextures(1,&num);
         SDL_Surface* img=SDL_LoadBMP(filename);
         glBindTexture(GL_TEXTURE_2D,num);
@@ -378,9 +378,9 @@ unsigned int ObjLoader::loadTexture(const char* filename)
         glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,img->w,img->h,0,GL_RGB,GL_UNSIGNED_SHORT_5_6_5,img->pixels);
         glTexEnvi(GL_TEXTURE_2D,GL_TEXTURE_ENV_MODE,GL_MODULATE);       //maybe just this
         SDL_FreeSurface(img);
-        texture.push_back(num);*/
-	
-
+        texture.push_back(num);
+		return num;*/
+		
 		GLuint tex_2d = SOIL_load_OGL_texture
 			(
 			filename,
