@@ -27,6 +27,8 @@ void Camera::lockCamera()
 		camYaw -= 360.0f;
 }
 
+
+//moves the camera in w,s,a,d directions, the values are directly passed to gltranslatef
 void Camera::moveCamera(float dist,float dir)
 {
 	float rad = (camYaw + dir) *M_PI / 180.0f;
@@ -34,6 +36,8 @@ void Camera::moveCamera(float dist,float dir)
 	camZ -= cos(rad) * dist;
 }
 
+
+//move the camera using mouse
 void Camera::moveCameraUp(float dist, float dir)
 {
 	float rad = (camPitch + dir) *M_PI / 180.0f;

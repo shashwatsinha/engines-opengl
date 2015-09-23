@@ -1,31 +1,16 @@
-﻿Build started 9/11/2015 11:35:44 PM.
-     1>Project "C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" on node 2 (Build target(s)).
+﻿Build started 9/22/2015 8:35:54 PM.
+     1>Project "C:\Users\user\documents\visual studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" on node 2 (Build target(s)).
      1>Link:
-         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Release\GameEngine.exe" /NOLOGO SDL2.lib SDL2main.lib SDL2test.lib glew32s.lib glew32.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Release\GameEngine.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Release\GameEngine.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
+         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.exe" /NOLOGO SDL2.lib SDL2main.lib SDL2test.lib glew32s.lib glew32.lib opengl32.lib SOIL.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
          Release\Errors.obj
          Release\MainGame.obj
          Release\ObjLoader.obj
          Release\Source.obj
-     1>Camera.obj : error LNK2001: unresolved external symbol _SDL_GetKeyboardState
-     1>Camera.obj : error LNK2001: unresolved external symbol _SDL_WarpMouseInWindow
-     1>Camera.obj : error LNK2001: unresolved external symbol _SDL_ShowCursor
-     1>Camera.obj : error LNK2001: unresolved external symbol _SDL_GetMouseState
-     1>Errors.obj : error LNK2001: unresolved external symbol _SDL_Quit
-     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_Init
-     1>MainGame.obj : error LNK2001: unresolved external symbol __imp__glewInit@0
-     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_GL_SwapWindow
-     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_SetWindowFullscreen
-     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_CreateWindow
-     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_PollEvent
-     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_GL_CreateContext
-     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_Delay
-     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_GetTicks
-     1>MainGame.obj : error LNK2001: unresolved external symbol _SDL_GL_SetAttribute
-     1>MainGame.obj : error LNK2001: unresolved external symbol "public: __thiscall Camera::~Camera(void)" (??1Camera@@QAE@XZ)
-     1>MSVCRT.lib(crtexe.obj) : error LNK2001: unresolved external symbol _main
-     1>C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Release\GameEngine.exe : fatal error LNK1120: 17 unresolved externals
-     1>Done Building Project "C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" (Build target(s)) -- FAILED.
+         Generating code
+         Finished generating code
+         GameEngine.vcxproj -> C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.exe
+     1>Done Building Project "C:\Users\user\documents\visual studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.26
+Time Elapsed 00:00:02.77

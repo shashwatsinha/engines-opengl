@@ -2,6 +2,8 @@
 #include "Errors.h"
 #include "iostream"
 #include "ObjLoader.h"
+
+
 using namespace std;
 
 
@@ -21,6 +23,7 @@ MainGame::MainGame()
 	_maxFPS = 60;
 	_mouseVel = 0.2f;
 	_moveVel = 0.2f;
+	id = -1;
 }
 
 
@@ -33,6 +36,8 @@ void MainGame::initSystems()
 {
 	//Initialize SDL
 	SDL_Init(SDL_INIT_EVERYTHING);
+
+	
 
 	//Open an SDL window
 	ptr_window = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _windowWidth, _windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
@@ -72,7 +77,7 @@ void MainGame::initSystems()
 	glDepthFunc(GL_LEQUAL);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
-	GLfloat amb_light[] = { 0.1, 0.1, 0.1, 1.0 };
+	GLfloat amb_light[] = { 1, 1, 1, 1.0 };
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb_light);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_COLOR_MATERIAL);
@@ -87,8 +92,9 @@ void MainGame::initSystems()
 void MainGame::run()
 {
 	initSystems();
-	obj.load("Models/Teapot.obj");
-	obj2.load("Models/Cow.obj");
+	_obn1 = obj.load("Models/ViolinCase.obj");
+	_obn2 = obj2.load("Models/capsule.obj");
+	_obn3 = obj3.load("Models/Teapot.obj");
 
 	gameLoop();
 }
@@ -118,6 +124,11 @@ void MainGame::gameLoop()
 		{
 			SDL_Delay(1000.0f / _maxFPS - _frameTicks);
 		}
+	}
+
+	if (_gameState == GameState::EXIT)
+	{
+		SDL_Quit();
 	}
 }
 
@@ -208,9 +219,6 @@ void MainGame::processInput()
 				
 			
 			}
-
-
-
 		}
 	}
 }
@@ -222,7 +230,6 @@ void MainGame::draw()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	mainCam.control(_moveVel, _mouseVel, mouseIn, ptr_window);
-	mainCam.updateCamera();
 	gluLookAt(0, 1,25, 0, 0,0 , 0, 1, 0);
 	glTranslatef(mainCam.camX*-1, mainCam.camY*-1, mainCam.camZ*-1);
 
@@ -230,17 +237,26 @@ void MainGame::draw()
 	glTranslatef(mainCam.camX*-1, mainCam.camY*-1, mainCam.camZ*-1);
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(-2, 0, 0);
-	obj.Draw();
+	glTranslatef(-2, 0, 5);
+	glCallList(_obn1);
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(2, 0, 0);
-	obj2.Draw();
+	glTranslatef(5, 0, 0);
+	glCallList(_obn2);
 	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(15, 0, 0);
+	glCallList(_obn3);
+	glPopMatrix();
+
 	SDL_GL_SwapWindow(ptr_window);
 
 }
 
+
+
+//Calculate fps logic
 void MainGame::calculateFPS()
 {
 	static const int _numSamples = 1000;
