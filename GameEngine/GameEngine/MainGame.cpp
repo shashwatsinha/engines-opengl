@@ -2,11 +2,29 @@
 #include "Errors.h"
 #include "iostream"
 #include "ObjLoader.h"
+#include <boost/thread/thread.hpp>
 
 
 using namespace std;
+ObjLoader obj;
+ObjLoader obj2;
+ObjLoader obj3;
 
+void fn1()
+{
+	 obj.load("Models/Teapot.obj");
 
+}
+void fn2()
+{
+	 obj2.load("Models/ViolinCase.obj");
+
+}
+
+void fn3()
+{
+	 obj3.load("Models/Teapot.obj");
+}
 
 MainGame::MainGame()
 {
@@ -23,7 +41,6 @@ MainGame::MainGame()
 	_maxFPS = 60;
 	_mouseVel = 0.2f;
 	_moveVel = 0.2f;
-	id = -1;
 }
 
 
@@ -36,8 +53,6 @@ void MainGame::initSystems()
 {
 	//Initialize SDL
 	SDL_Init(SDL_INIT_EVERYTHING);
-
-	
 
 	//Open an SDL window
 	ptr_window = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _windowWidth, _windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
@@ -77,7 +92,7 @@ void MainGame::initSystems()
 	glDepthFunc(GL_LEQUAL);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
-	GLfloat amb_light[] = { 1, 1, 1, 1.0 };
+	GLfloat amb_light[] = { 0.1, 0.1, 0.1, 1.0 };
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb_light);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_COLOR_MATERIAL);
@@ -92,9 +107,8 @@ void MainGame::initSystems()
 void MainGame::run()
 {
 	initSystems();
-	_obn1 = obj.load("Models/ViolinCase.obj");
-	_obn2 = obj2.load("Models/capsule.obj");
-	_obn3 = obj3.load("Models/Teapot.obj");
+	//obj.load("Models/Teapot.obj");
+	//obj2.load("Models/ViolinCase.obj");
 
 	gameLoop();
 }
@@ -113,7 +127,7 @@ void MainGame::gameLoop()
 		_frameCounter++;
 		if (_frameCounter == 10)
 		{
-		//	cout << _fps << endl;
+			//	cout << _fps << endl;
 			_frameCounter = 0;
 		}
 
@@ -124,11 +138,6 @@ void MainGame::gameLoop()
 		{
 			SDL_Delay(1000.0f / _maxFPS - _frameTicks);
 		}
-	}
-
-	if (_gameState == GameState::EXIT)
-	{
-		SDL_Quit();
 	}
 }
 
@@ -173,7 +182,7 @@ void MainGame::processInput()
 			SDL_ShowCursor(SDL_DISABLE);
 			break;
 
-		
+
 
 		case SDL_KEYDOWN:
 			switch (evnt.key.keysym.sym)
@@ -216,9 +225,12 @@ void MainGame::processInput()
 			case SDLK_d:
 				mainCam.moveCamera(_moveVel, 270);
 				break;
-				
-			
+
+
 			}
+
+
+
 		}
 	}
 }
@@ -230,33 +242,31 @@ void MainGame::draw()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	mainCam.control(_moveVel, _mouseVel, mouseIn, ptr_window);
-	gluLookAt(0, 1,25, 0, 0,0 , 0, 1, 0);
+	mainCam.updateCamera();
+	gluLookAt(0, 1, 25, 0, 0, 0, 0, 1, 0);
 	glTranslatef(mainCam.camX*-1, mainCam.camY*-1, mainCam.camZ*-1);
 
 	glPushMatrix();
 	glTranslatef(mainCam.camX*-1, mainCam.camY*-1, mainCam.camZ*-1);
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(-2, 0, 5);
-	glCallList(_obn1);
+	glTranslatef(-2, 0, 0);
+	obj.Draw();
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(5, 0, 0);
-	glCallList(_obn2);
+	glTranslatef(2, 0, 0);
+	obj2.Draw();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(15, 0, 0);
-	glCallList(_obn3);
+	glTranslatef(5, 5, 0);
+	obj3.Draw();
 	glPopMatrix();
 
 	SDL_GL_SwapWindow(ptr_window);
 
 }
 
-
-
-//Calculate fps logic
 void MainGame::calculateFPS()
 {
 	static const int _numSamples = 1000;
@@ -307,3 +317,17 @@ void MainGame::calculateFPS()
 	}
 }
 
+int main(int argc, char **argv)
+{
+	MainGame mainGame;
+	boost::thread thrd1(&fn1);
+	boost::thread thrd2(&fn2);
+	boost::thread thrd3(&fn3);
+	thrd1.join();
+	thrd2.join();
+	thrd3.join();
+
+	mainGame.run();
+
+	return 0;
+}

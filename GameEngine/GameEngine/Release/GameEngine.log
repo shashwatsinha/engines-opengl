@@ -1,16 +1,25 @@
-﻿Build started 9/22/2015 8:35:54 PM.
-     1>Project "C:\Users\user\documents\visual studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.exe" /NOLOGO SDL2.lib SDL2main.lib SDL2test.lib glew32s.lib glew32.lib opengl32.lib SOIL.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
+﻿Build started 10/4/2015 10:57:46 PM.
+     1>Project "C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt MainGame.cpp
+         MainGame.cpp
+     1>c:\users\user\documents\visual studio 2013\projects\gameengine\gameengine\Camera.h(21): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>MainGame.cpp(95): warning C4305: 'initializing' : truncation from 'double' to 'GLfloat'
+     1>MainGame.cpp(121): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+     1>MainGame.cpp(139): warning C4244: 'argument' : conversion from 'float' to 'Uint32', possible loss of data
+     1>MainGame.cpp(276): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+     1>MainGame.cpp(279): warning C4244: '=' : conversion from 'Uint32' to 'float', possible loss of data
+       Link:
+         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Release\GameEngine.exe" /NOLOGO /LIBPATH:E:\boost\boost_1_59_0\stage\lib SDL2.lib SDL2main.lib SDL2test.lib glew32s.lib glew32.lib opengl32.lib SOIL.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Release\GameEngine.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Release\GameEngine.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
          Release\Errors.obj
          Release\MainGame.obj
          Release\ObjLoader.obj
          Release\Source.obj
          Generating code
          Finished generating code
-         GameEngine.vcxproj -> C:\Users\user\documents\visual studio 2013\Projects\GameEngine\Release\GameEngine.exe
-     1>Done Building Project "C:\Users\user\documents\visual studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" (Build target(s)).
+         GameEngine.vcxproj -> C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Release\GameEngine.exe
+     1>Done Building Project "C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\GameEngine\GameEngine.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.77
+Time Elapsed 00:00:02.57

@@ -3,8 +3,6 @@
 #include <GL/glew.h>
 #include "ObjLoader.h"
 #include "Camera.h"
-#include <SDL\SDL_net.h>
-#include <cstring>
 
 enum class GameState { PLAY, EXIT };
 
@@ -16,18 +14,14 @@ public:
 	void initSystems();
 	void gameLoop();
 	void draw();
-	void connection();
 	void run();
 	void processInput();
 	void mouseLook(int, int);
 	GameState _gameState;
-	ObjLoader obj;
-	ObjLoader obj2;
-	ObjLoader obj3;
-	int _obn1;
-	int _obn2;
-	int _obn3;
+	//ObjLoader obj;
+	//ObjLoader obj2;
 	Camera mainCam;
+	ObjLoader cam;
 	float _xDist;
 	float _yDist;
 	float _zDist;
@@ -38,9 +32,6 @@ public:
 	int _windowHeight;
 	int _windowWidth;
 	void calculateFPS();
-	int id;
-	void setID(int i);
-	int getID();
 
 private:
 	SDL_Window *ptr_window;
@@ -51,17 +42,3 @@ private:
 	float _moveVel;
 	float _mouseVel;
 };
-
-struct data
-{
-	TCPsocket socket;
-	Uint32 timeout;
-	int id;
-	data(TCPsocket sock, Uint32 t, int i)
-	{
-		socket = sock;
-		timeout = t;
-		id = i;
-	}
-};
-

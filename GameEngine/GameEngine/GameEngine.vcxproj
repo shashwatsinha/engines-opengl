@@ -53,20 +53,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>E:\Simple OpenGL Image Library\src;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\include;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Simple OpenGL Image Library\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\boost\boost_1_59_0\;E:\boost\boost_1_59_0\boost\thread;$(SolutionDir)\Glew\include;$(SolutionDir)\SDL\include\;$(SolutionDir)\SOIL\src\;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\boost\boost_1_59_0\libs\thread;$(SolutionDir)\SDL\lib;$(SolutionDir)\Glew\lib;$(SolutionDir)\SOIL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>E:\Simple OpenGL Image Library\src;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\include;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Simple OpenGL Image Library\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\boost\boost_1_59_0\;E:\boost\boost_1_59_0\boost\thread;$(SolutionDir)\Glew\include;$(SolutionDir)\SDL\include\;$(SolutionDir)\SOIL\src\;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\boost\boost_1_59_0\libs\thread;$(SolutionDir)\SDL\lib;$(SolutionDir)\Glew\lib;$(SolutionDir)\SOIL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>E:\Simple OpenGL Image Library\src;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\include;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Simple OpenGL Image Library\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\boost\boost_1_59_0\;E:\boost\boost_1_59_0\boost\thread;$(SolutionDir)\Glew\include;$(SolutionDir)\SDL\include\;$(SolutionDir)\SOIL\src\;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\boost\boost_1_59_0\libs\thread;$(SolutionDir)\SDL\lib;$(SolutionDir)\Glew\lib;$(SolutionDir)\SOIL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>E:\Simple OpenGL Image Library\src;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\include;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Simple OpenGL Image Library\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\SDL\lib;C:\Users\user\Documents\Visual Studio 2013\Projects\GameEngine\Glew\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\boost\boost_1_59_0\;E:\boost\boost_1_59_0\boost\thread;$(SolutionDir)\Glew\include;$(SolutionDir)\SDL\include\;$(SolutionDir)\SOIL\src\;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\boost\boost_1_59_0\libs\thread;$(SolutionDir)\SDL\lib;$(SolutionDir)\Glew\lib;$(SolutionDir)\SOIL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -78,6 +78,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;glew32s.lib;glew32.lib;opengl32.lib;SOIL.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>E:\boost\boost_1_59_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -94,16 +95,19 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;glew32s.lib;glew32.lib;opengl32.lib;SOIL.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>E:\boost\boost_1_59_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;glew32s.lib;glew32.lib;opengl32.lib;SOIL.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\boost\boost_1_59_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;glew32s.lib;glew32.lib;opengl32.lib;SOIL.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\boost\boost_1_59_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
